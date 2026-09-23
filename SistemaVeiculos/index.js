@@ -1,26 +1,107 @@
-import VeiculoFactory from "./VeiculoFactory.js"
-import Veiculo from "./Veiculo.js"
+const prompt = require('prompt-sync')()
+
+const VeiculoFactory = require("./VeiculoFactory.js")
+const Veiculo = require("./Veiculo.js")
 
 
-const carro = VeiculoFactory.criarVeiculo(
-  "carro",
-  "Toyota",
-  "Corolla"
-)
-
-const moto = VeiculoFactory.criarVeiculo(
-  "moto",
-  "Honda",
-  "CG 160"
-)
+function separador(){
+    console.log("\n===============================\n")
+}
 
 
-console.log(carro.mostrarInformacoes())
-console.log(carro.acelerar())
+console.log("SISTEMA DE VEÍCULOS\n")
 
 
-console.log(moto.mostrarInformacoes())
-console.log(moto.acelerar())
+function criarVeiculo(){
+
+    separador()
+
+    let tipo = prompt("Digite o tipo do veículo (carro/moto): ")
+
+    let marca = prompt("Digite a marca: ")
+
+    let modelo = prompt("Digite o modelo: ")
 
 
-console.log(`Quantidade de veículos: ${Veiculo.quantidade}`)
+    let veiculo = VeiculoFactory.criarVeiculo(
+        tipo,
+        marca,
+        modelo
+    )
+
+
+    if(veiculo){
+
+        console.log("\nVeículo criado com sucesso!")
+
+        separador()
+
+        console.log(veiculo.mostrarInformacoes())
+
+        console.log(veiculo.acelerar())
+
+        separador()
+
+    }else{
+
+        console.log("Tipo de veículo inválido")
+
+    }
+
+}
+
+
+function menu(){
+
+    let opcao
+
+
+    do{
+
+        console.log("===== SISTEMA DE VEÍCULOS =====\n")
+
+        console.log("1 - Criar veículo")
+        console.log("2 - Ver quantidade de veículos")
+        console.log("3 - Sair")
+
+
+        separador()
+
+
+        opcao = prompt("Escolha uma opção: ")
+
+
+        if(opcao === "1"){
+
+            criarVeiculo()
+
+        }
+
+        else if(opcao === "2"){
+
+            console.log(
+                `Quantidade de veículos criados: ${Veiculo.quantidade}`
+            )
+
+        }
+
+        else if(opcao === "3"){
+
+            console.log("Encerrando sistema...")
+
+        }
+
+        else{
+
+            console.log("Opção inválida")
+
+        }
+
+
+    }while(opcao !== "3")
+
+
+}
+
+
+menu()

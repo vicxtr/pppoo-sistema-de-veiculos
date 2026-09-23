@@ -1,20 +1,31 @@
-import Carro from "./Carro.js"
-import Moto from "./Moto.js"
+const Carro = require("./Carro.js")
+const Moto = require("./Moto.js")
 
-class VeiculoFactory {
 
-  static criarVeiculo(tipo, marca, modelo) {
+class VeiculoFactory{
 
-    if(tipo === "carro") {
-      return new Carro(marca, modelo, 4)
+
+    static criarVeiculo(tipo, marca, modelo){
+
+
+        if(tipo === "carro"){
+
+            return new Carro(marca, modelo)
+
+        }
+
+
+        else if(tipo === "moto"){
+
+            return new Moto(marca, modelo)
+
+        }
+
+
     }
 
-    if(tipo === "moto") {
-      return new Moto(marca, modelo, 160)
-    }
-
-  }
 
 }
 
-export default VeiculoFactory
+
+module.exports = VeiculoFactory

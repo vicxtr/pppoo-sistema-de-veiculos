@@ -1,16 +1,26 @@
-import Veiculo from "./Veiculo.js"
+const Veiculo = require("./Veiculo.js")
 
-class Carro extends Veiculo {
 
-  constructor(marca, modelo, portas) {
-    super(marca, modelo)
+class Carro extends Veiculo{
 
-    this.portas = portas
-  }
 
-  acelerar() {
-    return "O carro está acelerando com 4 rodas"
-  }
+    constructor(marca, modelo){
+
+        super(marca, modelo)
+
+        this.portas = 4
+
+    }
+
+
+    acelerar(){
+
+        return "O carro está acelerando com 4 rodas"
+
+    }
+
+
 }
 
-export default Carro
+
+module.exports = Carro
